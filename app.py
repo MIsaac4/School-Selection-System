@@ -8,6 +8,9 @@ from flask_sqlalchemy import SQLAlchemy
 # initialize sql-alchemy
 db = SQLAlchemy()
 
+# import blueprints
+from routes.index import index_bp
+
 def create_app(config_name):
     """ app factory """
     
@@ -20,6 +23,9 @@ def create_app(config_name):
     # use running config settings on app
     app.config.from_object(app_config[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    # register blueprints with the app
+    app.register_blueprint(index_bp)    
 
     # register app with the db
     db.init_app(app)
