@@ -1,8 +1,10 @@
 from app import db
+
 from models.school import School
 from models.student import Student
+from models.parent import Parent
 
-class Choice(db.Model):
+class Choice(db.Model, Parent):
     """ Students Choice table definition """
 
     _tablename_ = "choice"
@@ -19,4 +21,4 @@ class Choice(db.Model):
         self.school_id = school_id
         self.is_assigned = is_assigned
 
-
+    
