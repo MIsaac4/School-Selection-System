@@ -1,6 +1,8 @@
 from app import db
 
-class Student(db.Model):
+from models.parent import Parent
+
+class Student(db.Model, Parent):
     """ Student table definition """
 
     _tablename_ = "student"
@@ -14,16 +16,3 @@ class Student(db.Model):
         """ initialize with name and aggregate """
         self.name = name
         self.aggregate = aggregate
-
-
-    def save(self):
-        """  save a user to the database   """
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()

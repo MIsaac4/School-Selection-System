@@ -5,6 +5,7 @@ from app import db, app
 # import models
 from models.school import School
 from models.student import Student
+from models.choice import Choice
 
 # register app and db with migration class
 migrate = Migrate(app, db)

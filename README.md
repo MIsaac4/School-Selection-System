@@ -18,7 +18,7 @@ Here's a great resource to check out:
 
 [How To Install and Use PostgreSQL](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-18-04)
 
-Create the two databases `osprey` (for development) and `osprey_test_db` (for unit testing).
+Create the two databases `school_selection_db` (for development) and `school_selection_testing_db` (for unit testing).
 
 ##### Create a Virtual Environment
 

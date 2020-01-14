@@ -1,6 +1,8 @@
 from app import db
 
-class School(db.Model):
+from models.parent import Parent
+
+class School(db.Model, Parent):
     """ School table definition """
 
     _tablename_ = "school"
@@ -17,14 +19,4 @@ class School(db.Model):
         self.cut_off_points = cut_off_points
         self.number_of_students = number_of_students
 
-    def save(self):
-        """  save a school to the database   """
-        db.session.add(self)
-        db.session.commit()
-
-    def delete(self):
-        db.session.delete(self)
-        db.session.commit()
-
-    def update(self):
-        db.session.commit()
+    
