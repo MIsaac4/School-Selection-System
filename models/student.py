@@ -14,4 +14,16 @@ class Student(db.Model, ToDict):
         """ initialize with name and aggregate """
         self.name = name
         self.aggregate = aggregate
-        
+
+
+    def save(self):
+        """  save a user to the database   """
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
