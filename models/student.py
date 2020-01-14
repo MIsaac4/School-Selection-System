@@ -8,7 +8,7 @@ class Student(db.Model):
     # fields of the Student table
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(256), nullable=False, default="")
-    aggregate = db.Column(db.Integer(100), nullable=False, default="")
+    aggregate = db.Column(db.Integer, nullable=False, default="")
 
     def __init__(self, name, aggregate):
         """ initialize with name and aggregate """
