@@ -16,3 +16,15 @@ class School(db.Model):
         self.name = name
         self.cut_off_points = cut_off_points
         self.number_of_students = number_of_students
+
+    def save(self):
+        """  save a school to the database   """
+        db.session.add(self)
+        db.session.commit()
+
+    def delete(self):
+        db.session.delete(self)
+        db.session.commit()
+
+    def update(self):
+        db.session.commit()
