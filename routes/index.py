@@ -14,6 +14,6 @@ def registerStudent():
     form = RegisterStudentForm()
     if form.is_submitted():
         student = Student(name=form.studentName.data, aggregate=form.aggregate.data)
-        student.save
+        student.save()
         flash('Student Registered!', 'success')
     return render_template('studentpage.html', form=form)
