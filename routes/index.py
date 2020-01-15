@@ -7,8 +7,10 @@ from models.school import School
 index_bp = Blueprint("user", __name__)
 
 @index_bp.route("/")
-def index():
-    return render_template("index.html")
+@index_bp.route("/home")
+def home():
+    schools = School.query.all()
+    return render_template("index.html", schools=schools)
 
 @index_bp.route("/register/student", methods=['GET', 'POST'])
 def registerStudent():
@@ -20,7 +22,7 @@ def registerStudent():
         else:
             student.save()
             flash('Student Registered!', 'success')
-    return render_template('studentpage.html', form=form)
+    return render_template('studentpage.html', form=form, schools=getSchools())
 
 
 @index_bp.route("/register/school", methods=['GET', 'POST'])
@@ -33,7 +35,7 @@ def registerSchool():
         else:
             school.save()
             flash('School Registered!', 'success')
-    return render_template('schoolpage.html', form=form)
+    return render_template('schoolpage.html', form=form, schools=getSchools())
 
 
 # Checking if name exists
@@ -42,3 +44,9 @@ def contains(new_name, model):
     if obj:
         return True
     return False
+
+
+# Get all schools
+def getSchools():
+    schools =School.query.all()
+    return schools
