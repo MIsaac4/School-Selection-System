@@ -9,10 +9,12 @@ class Student(db.Model, Parent):
 
     # fields of the Student table
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), nullable=False, default="")
-    aggregate = db.Column(db.Integer, nullable=False, default="")
+    name = db.Column(db.String(256), unique=True, nullable=False)
+    aggregate = db.Column(db.Integer, nullable=False)
 
     def __init__(self, name, aggregate):
         """ initialize with name and aggregate """
         self.name = name
         self.aggregate = aggregate
+
+   
