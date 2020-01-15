@@ -9,7 +9,7 @@ class School(db.Model, Parent):
 
     # fields of the Student table
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(256), nullable=False, default="")
+    name = db.Column(db.String(256),unigue=True, nullable=False, default="")
     cut_off_points = db.Column(db.Integer, nullable=False, default="")
     number_of_students = db.Column(db.Integer, nullable=False, default="")
 
@@ -18,5 +18,3 @@ class School(db.Model, Parent):
         self.name = name
         self.cut_off_points = cut_off_points
         self.number_of_students = number_of_students
-
-    
