@@ -1,8 +1,7 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, IntegerField
 
-class RegisterStudent(FlaskForm):
+class RegisterStudentForm(FlaskForm):
     studentName = StringField('Name')
-    aggregate = StringField('Aggregate')
+    aggregate = IntegerField('Aggregate')
     submit = SubmitField('Register')
-    

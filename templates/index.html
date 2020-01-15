@@ -1,10 +1,24 @@
 <html>
     <head>
-
+        <title>School Selection System</title>
     </head>
     <body>
         <div>
             <p>Hello World</p>
+            <a href="/register/student"><button >Register Student</button></a>
+
+            <div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-{{ category }}">
+                        {{ message }}
+                        </div>
+                    {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                {% block content %}{% endblock %}
+            </div>
         </div>
     </body>
 </html>

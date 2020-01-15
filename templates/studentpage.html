@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content%}
+<h2>Register Student</h2>
+<form action="" method="post">
+    <p>
+        {{form.studentName.label}} <br>
+        {{form.studentName(size=35)}}
+    </p>
+    <p>
+        {{form.aggregate.label}} <br>
+        {{form.aggregate()}}
+    </p>
+    <p> {{form.submit()}} </p>
+</form>
+
+{% endblock content%}
