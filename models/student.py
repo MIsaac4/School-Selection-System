@@ -16,7 +16,7 @@ class Student(db.Model, Parent):
     second_choice = db.Column("second_choice", db.Integer, db.ForeignKey(School.id, ondelete='CASCADE'), nullable=False)
     third_choice = db.Column("third_choice", db.Integer, db.ForeignKey(School.id, ondelete='CASCADE'), nullable=False)        
     fourth_choice = db.Column("fourth_choice", db.Integer, db.ForeignKey(School.id, ondelete='CASCADE'), nullable=False)
-    is_assigned = db.Column("is_assigned", db.Integer, default=0)
+    assigned = db.Column("assigned", db.Integer, default=0)
 
     def __init__(self, name, aggregate, first_choice, second_choice, third_choice, fourth_choice):
         """ initialize with name and aggregate """
