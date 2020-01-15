@@ -14,6 +14,18 @@ def registerStudent():
     form = RegisterStudentForm()
     if form.is_submitted():
         student = Student(name=form.studentName.data, aggregate=form.aggregate.data)
-        student.save()
-        flash('Student Registered!', 'success')
+        if contains(str(form.studentName.data)):
+            flash('Student Exists', 'error')
+        else:
+            student.save()
+            flash('Student Registered!', 'success')
     return render_template('studentpage.html', form=form)
+
+
+
+# Checking if name exists
+def contains(new_name):
+    student = Student.query.filter_by(name=new_name).first()
+    if student:
+        return True
+    return False

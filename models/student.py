@@ -16,3 +16,5 @@ class Student(db.Model, Parent):
         """ initialize with name and aggregate """
         self.name = name
         self.aggregate = aggregate
+
+   
