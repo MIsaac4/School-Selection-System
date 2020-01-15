@@ -16,7 +16,7 @@ def home():
 def registerStudent():
     form = RegisterStudentForm()
     if form.is_submitted():
-        student = Student(name=form.studentName.data, aggregate=form.aggregate.data)
+        student = Student(name=form.studentName.data, aggregate=form.aggregate.data, first_choice=form.first_choice.data, second_choice=form.second_choice.data, third_choice=form.third_choice.data, fourth_choice=form.fourth_choice.data)
         if contains(str(form.studentName.data), Student):
             flash('Student Exists', 'error')
         else:

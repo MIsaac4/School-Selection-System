@@ -5,6 +5,10 @@ from wtforms.validators import DataRequired
 class RegisterStudentForm(FlaskForm):
     studentName = StringField('Name', validators=['DataRequired()'])
     aggregate = IntegerField('Aggregate', validators=['DataRequired()'])
+    first_choice = IntegerField('First Choice', validators=['DataRequired()'])
+    second_choice = IntegerField('Second Choice', validators=['DataRequired()'])
+    third_choice = IntegerField('Third Choice', validators=['DataRequired()'])
+    fourth_choice = IntegerField('Fourth Choice', validators=['DataRequired()'])
     submit = SubmitField('Register')
 
 class RegisterSchoolForm(FlaskForm):
