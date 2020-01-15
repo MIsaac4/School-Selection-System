@@ -1,3 +1,4 @@
+from app import db
 
 class Parent():
     """ Parent class to be inherited """

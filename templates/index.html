@@ -1,10 +1,52 @@
+<!DOCTYPE html>
 <html>
     <head>
+        <title>School Selection System</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}" >
 
     </head>
     <body>
         <div>
-            <p>Hello World</p>
+            <div class="left">
+                <h1>School Selection System</h1>
+                <a href="/"><button >Home</button></a>
+                <a href="/register/student"><button >Register Student</button></a>
+                <a href="/register/school"><button >Register School</button></a>
+    
+                <div>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }}">
+                            {{ message }}
+                            </div>
+                        {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    {% block content %}{% endblock %}
+                </div>
+            </div>
+
+            <!-- Showing Schools -->
+            <div class="right">
+                <h2>Available Schools</h2>
+                <table>
+                    <tr>
+                        <th>Number</th>
+                        <th>Name</th>
+                        <th>Cut Off Points</th>
+                    </tr>
+                    {% for school in schools %}
+                        <tr>
+                            <td>{{school.id}}</td>
+                            <td>{{ school.name }}</td>
+                            <td>{{ school.cut_off_points }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                
+            </div>
         </div>
+        
     </body>
 </html>

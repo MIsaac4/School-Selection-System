@@ -23,6 +23,7 @@ def create_app(config_name):
     # use running config settings on app
     app.config.from_object(app_config[config_name])
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SECRET_KEY']=os.getenv('SECRET_KEY')
 
     # register blueprints with the app
     app.register_blueprint(index_bp)    

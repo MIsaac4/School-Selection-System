@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content%}
+<h2>Register Student</h2>
+<form action="" method="post">
+    <p>
+        {{form.studentName.label}} &emsp;
+        {{form.studentName(size=35)}}
+    </p>
+    <p>
+        {{form.aggregate.label}} &emsp;
+        {{form.aggregate()}}
+    </p>
+    <p>
+        {{form.first_choice.label}} &emsp;
+        {{form.first_choice()}}
+    </p>
+    <p>
+        {{form.second_choice.label}} &emsp;
+        {{form.second_choice()}}
+    </p>
+    <p>
+        {{form.third_choice.label}} &emsp;
+        {{form.third_choice()}}
+    </p>
+    <p>
+        {{form.fourth_choice.label}} &emsp;
+        {{form.fourth_choice()}}
+    </p>
+    <p> {{form.submit()}} </p>
+</form>
+
+{% endblock content%}
