@@ -1,0 +1,21 @@
+{% extends "index.html" %}
+
+{% block content%}
+    <h3>System infor</h3>
+
+    <p>
+        <span>Available Students</span>
+        <span>{{ studentNo }}</span> <br><br>
+
+        <span>Unassigned Students</span>
+        <span>{{ unassigned }}</span> <br><br>
+
+        <span>Available Schools</span>
+        <span>{{ schoolNo }}</span> <br><br>
+    </p>
+
+    <a href="/assign"><button>ASSIGN</button></a>
+    <br><br>
+    <a href="/delete"><button>UNASSIGN</button></a>
+
+{% endblock content%}
