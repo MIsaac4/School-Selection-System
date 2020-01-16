@@ -32,11 +32,13 @@
                 <h2>Available Schools</h2>
                 <table>
                     <tr>
+                        <th>Number</th>
                         <th>Name</th>
                         <th>Cut Off Points</th>
                     </tr>
                     {% for school in schools %}
                         <tr>
+                            <td>{{school.id}}</td>
                             <td>{{ school.name }}</td>
                             <td>{{ school.cut_off_points }}</td>
                         </tr>
