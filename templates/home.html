@@ -18,4 +18,36 @@
     <br><br>
     <a href="/delete"><button>UNASSIGN</button></a>
 
+    <br><br><br>
+
+    <form action="" method="post">
+        <p>
+            {{form.schoolId.label}} <br>
+            {{form.schoolId()}}
+        </p>
+        <p> {{form.submit()}} </p>
+    </form>
+
+
+    <!-- Showing School -->
+<div class="right">
+    <h2>{{ school.name }}</h2>
+    <span> Cut off points:  {{ school.cut_off_points}}</span>
+    <span>St wanted: {{ school.number_of_students}}</span>
+    <span>StudentsNo: {{stno}}</span>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Aggregate</th>
+
+        </tr>
+        {% for student in students %}
+            <tr>
+                <td>{{student.name}}</td>
+                <td>{{ student.aggregate }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
 {% endblock content%}

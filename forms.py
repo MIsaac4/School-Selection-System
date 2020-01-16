@@ -16,3 +16,7 @@ class RegisterSchoolForm(FlaskForm):
     cutOffPoints = IntegerField('Cut off Points', validators=['DataRequired()'])
     studentNumber = IntegerField('Number of Students', validators=['DataRequired()'])
     submit = SubmitField('Register')
+
+class GetSchoolForm(FlaskForm):
+    schoolId = StringField('Enter Id of a school', validators=['DataRequired()'])
+    submit = SubmitField('Submit')

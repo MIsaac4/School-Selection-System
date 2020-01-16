@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, flash
+from flask import Blueprint, render_template, request, flash, redirect
 from forms import *
 from models.student import Student
 from models.school import School
@@ -6,13 +6,22 @@ from models.school import School
 # Index blueprint
 index_bp = Blueprint("user", __name__)
 
-@index_bp.route("/")
-@index_bp.route("/home")
+@index_bp.route("/", methods=['GET', 'POST'])
+@index_bp.route("/home", methods=['GET', 'POST'])
 def home():
     schools = School.query.all()
+    student=[]
     students = Student.query.all()
     unassigned = Student.query.filter_by(assigned=0).all()
-    return render_template("home.html", schools=schools, studentNo=len(students), unassigned=len(unassigned), schoolNo=len(schools))
+    school = None
+    form = GetSchoolForm()
+    if form.is_submitted():
+        school = School.query.filter_by(id=form.schoolId.data).first()
+        if not school:
+            flash('School Doesnt Exist', 'error')
+        student = Student.query.filter_by(assigned=school.id).all()
+        return render_template("home.html", schools=schools, studentNo=len(students), unassigned=len(unassigned), schoolNo=len(schools), form=form, school=school, students= student, stno=len(student))
+    return render_template("home.html", schools=schools, studentNo=len(students), unassigned=len(unassigned), schoolNo=len(schools), form=form, school=school, students= student, stno=len(student))
 
 @index_bp.route("/register/student", methods=['GET', 'POST'])
 def registerStudent():
@@ -41,14 +50,10 @@ def registerSchool():
 
 @index_bp.route("/show/students", methods=['GET', 'POST'])
 def showStudentsInSchool():
-    form = RegisterSchoolForm()
     school = School.query.filter_by(id=2).first()
     students = Student.query.filter_by(assigned=school.id).all()
     stu = Student.query.filter_by(assigned=0).all()
-
-
-
-    return render_template('schoolpage.html', school=school, students= students, form=form, stno=len(students), unassigned= len(stu))
+    return render_template('home.html', school=school, students= students, stno=len(students), unassigned= len(stu))
 
 
 
@@ -67,12 +72,13 @@ def getSchools():
 
 
 
-
-
-
 def sortedStudents():
     student = Student.query.order_by(Student.aggregate).all()
     return student
+
+def getStudentsInSchool(id):
+    students = Student.query.filter_by(assigned=id).all()
+    return len(students)
 
 @index_bp.route("/first")
 def assignfirstchoice():
@@ -110,7 +116,7 @@ def unassignAllStudents():
     for student in students:
         student.assigned = 0
         student.update()
-    return home()
+    return redirect("/")
 
 
     
@@ -140,4 +146,4 @@ def checkStudentAssigned():
                 student.assigned = student.fourth_choice
                 student.update()
                 
-    return home()
+    return redirect("/")

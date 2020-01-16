@@ -19,26 +19,4 @@
 </form>
 
 
-<!-- Showing School -->
-<div class="right">
-    <h2>{{ school.name }}</h2>
-    <span> Cut off points:  {{ school.cut_off_points}}</span>
-    <span>Students: {{ school.number_of_students}}</span>
-    <span>StudentsNo: {{ stno}}</span>
-    <span>Unassigned: {{ unassigned}}</span>
-    <table>
-        <tr>
-            <th>Name</th>
-            <th>Aggregate</th>
-
-        </tr>
-        {% for student in students %}
-            <tr>
-                <td>{{student.name}}</td>
-                <td>{{ student.aggregate }}</td>
-            </tr>
-        {% endfor %}
-    </table>
-</div>
-
 {% endblock content%}
